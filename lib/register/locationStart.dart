@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:daangn_clone/register/locationRequest.dart';
 
 class LocationStartPage extends StatefulWidget {
   @override
@@ -6,6 +8,27 @@ class LocationStartPage extends StatefulWidget {
 }
 
 class _LocationStartPageState extends State<LocationStartPage> {
+
+  Future<void> requestLocationPermission() async {
+    final serviceStatusLocation = await Permission.locationWhenInUse.isGranted;
+
+    bool isLocation = serviceStatusLocation == ServiceStatus.enabled;
+
+    final status = await Permission.locationWhenInUse.request();
+
+    if (status == PermissionStatus.granted) {
+      print('Permission Granted');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LocationRequestPage()),
+      );
+    } else if (status == PermissionStatus.denied) {
+      print('Permission denied');
+    } else if (status == PermissionStatus.permanentlyDenied) {
+      print('Permission Permanently Denied');
+      await openAppSettings();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +47,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                   child: Text(
                     "당근마켓",
                     style: TextStyle(
-                      fontFamily: "BMJUA",
+                      fontFamily: "Jalnan",
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
                       color: Color(0xffF27F3D),
@@ -84,16 +107,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 width: 300,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRouteWithoutAnimation(
-                        // builder: (context) => 다음페이지(
-                        //
-                        // ),
-                      ),
-                    );
-                  },
+                  onPressed: requestLocationPermission,
                   child: Text(
                     '내 동네 설정하고 시작하기',
                     style: TextStyle(

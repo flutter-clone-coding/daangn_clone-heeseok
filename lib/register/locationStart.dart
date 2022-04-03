@@ -57,9 +57,11 @@ class _LocationStartPageState extends State<LocationStartPage> {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top:20, bottom: 20),
+                  width: 150,
+                  height: 150,
+                  margin: EdgeInsets.only(top:10, bottom: 10),
                   child: Image.asset(
-                    "lib/asset/img_locationStart.jpg",
+                    "lib/asset/daangn_logo.png",
                   ),
                 ),
               ),
@@ -67,7 +69,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 child: Container(
                   margin: EdgeInsets.only(top:10, bottom: 10),
                   child: Text(
-                    "우리 동네 중고 직거래",
+                    "당신 근처의 당근마켓",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -80,7 +82,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 child: Container(
                   margin: EdgeInsets.only(bottom: 3),
                   child: Text(
-                    "당근마켓은 동네 직거래 마켓이에요.",
+                    "내 동네를 설정하고",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
@@ -93,7 +95,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 child: Container(
                   margin: EdgeInsets.only(bottom: 3),
                   child: Text(
-                    "내 동네를 설정하고 시작해보세요!",
+                    "당근마켓을 시작해보세요.",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
@@ -103,13 +105,13 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top:60, bottom: 20),
-                width: 300,
+                margin: EdgeInsets.only(top:200, bottom: 20),
+                width: MediaQuery.of(context).size.width * 0.9,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: requestLocationPermission,
                   child: Text(
-                    '내 동네 설정하고 시작하기',
+                    '시작하기',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -119,10 +121,36 @@ class _LocationStartPageState extends State<LocationStartPage> {
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
                     splashFactory: NoSplash.splashFactory,
-                    primary: Color(0xffF27F3D),
+                    primary: Colors.deepOrangeAccent,
                     // side: BorderSide(width: 0, color: Colors.white38),
                   ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      '이미 계정이 있나요?',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 5),
+                    child: Text(
+                      '로그인',
+                      style: TextStyle(
+                        color: Colors.orangeAccent,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

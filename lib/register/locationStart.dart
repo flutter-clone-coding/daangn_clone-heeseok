@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:daangn_clone/register/locationRequest.dart';
+import 'package:daangn_clone/register/login.dart';
 
 class LocationStartPage extends StatefulWidget {
   @override
@@ -104,8 +106,15 @@ class _LocationStartPageState extends State<LocationStartPage> {
                   ),
                 ),
               ),
+
+              Expanded(
+                child: const SizedBox(
+                  height: kToolbarHeight,
+                  width: double.infinity,
+                ),
+              ),
+
               Container(
-                margin: EdgeInsets.only(top:200, bottom: 20),
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 50,
                 child: ElevatedButton(
@@ -126,31 +135,46 @@ class _LocationStartPageState extends State<LocationStartPage> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      '이미 계정이 있나요?',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
+              Container(
+                margin: EdgeInsets.only(top: 20, bottom: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '이미 계정이 있나요?',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 5),
-                    child: Text(
-                      '로그인',
-                      style: TextStyle(
-                        color: Colors.orangeAccent,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      margin: EdgeInsets.only(left: 5),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRouteWithoutAnimation(
+                              builder: (context) => LoginPage(
+
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          '로그인',
+                          style: TextStyle(
+                            color: Colors.orangeAccent,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

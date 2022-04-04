@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:daangn_clone/register/locationStart.dart';
 
 class LoginPage extends StatefulWidget {
@@ -109,6 +110,10 @@ class _LoginPageState extends State<LoginPage> {
                   margin: EdgeInsets.only(top: 30),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                    ],
                     decoration: const InputDecoration(
                       hintText: '휴대폰 번호를 입력해주세요',
                       contentPadding: const EdgeInsets.all(15),

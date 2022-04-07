@@ -5,6 +5,8 @@ import 'package:daangn_clone/register/locationRequest.dart';
 import 'package:daangn_clone/register/login.dart';
 
 class LocationStartPage extends StatefulWidget {
+  const LocationStartPage({Key? key}) : super(key: key);
+
   @override
   _LocationStartPageState createState() => _LocationStartPageState();
 }
@@ -40,13 +42,13 @@ class _LocationStartPageState extends State<LocationStartPage> {
 
       body: SafeArea(
         child: Container(
-          color: Color(0xffF8F9FA),
+          color: const Color(0xffF8F9FA),
           child: Column(
             children: <Widget>[
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 60, bottom: 20),
-                  child: Text(
+                  margin: const EdgeInsets.only(top: 60, bottom: 20),
+                  child: const Text(
                     "당근마켓",
                     style: TextStyle(
                       fontFamily: "Jalnan",
@@ -61,7 +63,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 child: Container(
                   width: 150,
                   height: 150,
-                  margin: EdgeInsets.only(top:10, bottom: 10),
+                  margin: const EdgeInsets.only(top:10, bottom: 10),
                   child: Image.asset(
                     "lib/asset/daangn_logo.png",
                   ),
@@ -69,8 +71,8 @@ class _LocationStartPageState extends State<LocationStartPage> {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top:10, bottom: 10),
-                  child: Text(
+                  margin: const EdgeInsets.only(top:10, bottom: 10),
+                  child: const Text(
                     "당신 근처의 당근마켓",
                     style: TextStyle(
                       fontSize: 20,
@@ -82,8 +84,8 @@ class _LocationStartPageState extends State<LocationStartPage> {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 3),
-                  child: Text(
+                  margin: const EdgeInsets.only(bottom: 3),
+                  child: const Text(
                     "내 동네를 설정하고",
                     style: TextStyle(
                       fontSize: 16,
@@ -95,8 +97,8 @@ class _LocationStartPageState extends State<LocationStartPage> {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 3),
-                  child: Text(
+                  margin: const EdgeInsets.only(bottom: 3),
+                  child: const Text(
                     "당근마켓을 시작해보세요.",
                     style: TextStyle(
                       fontSize: 16,
@@ -107,8 +109,8 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 ),
               ),
 
-              Expanded(
-                child: const SizedBox(
+              const Expanded(
+                child: SizedBox(
                   height: kToolbarHeight,
                   width: double.infinity,
                 ),
@@ -119,7 +121,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: requestLocationPermission,
-                  child: Text(
+                  child: const Text(
                     '시작하기',
                     style: TextStyle(
                       color: Colors.white,
@@ -136,22 +138,20 @@ class _LocationStartPageState extends State<LocationStartPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 20, bottom: 25),
+                margin: const EdgeInsets.only(top: 20, bottom: 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      child: Text(
-                        '이미 계정이 있나요?',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
-                        ),
+                    const Text(
+                      '이미 계정이 있나요?',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 5),
+                      margin: const EdgeInsets.only(left: 5),
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
@@ -163,7 +163,7 @@ class _LocationStartPageState extends State<LocationStartPage> {
                             ),
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           '로그인',
                           style: TextStyle(
                             color: Colors.orangeAccent,

@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:daangn_clone/register/locationRequest.dart';
-import 'package:daangn_clone/register/login.dart';
 
 class LocationStartPage extends StatefulWidget {
   const LocationStartPage({Key? key}) : super(key: key);
@@ -154,13 +153,9 @@ class _LocationStartPageState extends State<LocationStartPage> {
                       margin: const EdgeInsets.only(left: 5),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushNamed(
                             context,
-                            MaterialPageRouteWithoutAnimation(
-                              builder: (context) => LoginPage(
-
-                              ),
-                            ),
+                            '/login'
                           );
                         },
                         child: const Text(
@@ -182,11 +177,4 @@ class _LocationStartPageState extends State<LocationStartPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

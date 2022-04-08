@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daangn_clone/register/locationStart.dart';
+import 'package:daangn_clone/register/locationRequest.dart';
+import 'package:daangn_clone/register/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const LocationStartPage(),
+      initialRoute: '/locationStart',
+      routes: {
+        '/locationStart': (context) => const LocationStartPage(),
+        '/locationRequest': (context) => LocationRequestPage(),
+        '/login': (context) => LoginPage(),
+      },
     );
   }
 }

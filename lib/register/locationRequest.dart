@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:daangn_clone/register/login.dart';
 
 class LocationRequestPage extends StatefulWidget {
   @override
@@ -36,13 +35,9 @@ class _LocationRequestPageState extends State<LocationRequestPage> {
                 height:40,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRouteWithoutAnimation(
-                        builder: (context) => LoginPage(
-
-                        ),
-                      ),
+                      '/login'
                     );
                   },
                   child: const Text(
@@ -141,11 +136,4 @@ class _LocationRequestPageState extends State<LocationRequestPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

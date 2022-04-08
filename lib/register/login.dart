@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:daangn_clone/register/locationStart.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,13 +18,8 @@ class _LoginPageState extends State<LoginPage> {
         elevation: 0.0, // Appbar 그림자
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
+            Navigator.pop(
               context,
-              MaterialPageRouteWithoutAnimation(
-                builder: (context) => const LocationStartPage(
-
-                ),
-              ),
             );
           },
           icon: const Icon(
@@ -174,11 +168,4 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

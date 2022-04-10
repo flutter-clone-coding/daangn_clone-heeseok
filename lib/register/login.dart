@@ -10,6 +10,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 
   TextEditingController phoneNumber = TextEditingController();
+  bool phoneValid = false;
+  bool certificationValid = false;
+  bool widgetVisible = false;
+  String buttonText = '인증문자 받기';
 
   @override
   Widget build(BuildContext context) {
@@ -36,63 +40,70 @@ class _LoginPageState extends State<LoginPage> {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.only(left: 20, bottom: 20),
-                child: const Text(
-                  "휴대폰 번호를 인증해주세요.",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
+              Visibility(
+                visible: !widgetVisible ? true : false,
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      margin: const EdgeInsets.only(left: 20, bottom: 20),
+                      child: const Text(
+                        "휴대폰 번호를 인증해주세요.",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(left: 20),
+                          child: const Text(
+                            "당근마켓은 휴대폰 번호로 가입해요. 번호는 ",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "안전하게",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(left: 20),
+                          child: const Text(
+                            "보관",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "되며 어디에도 공개되지 않아요.",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              Row(
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.only(left: 20),
-                    child: const Text(
-                      "당근마켓은 휴대폰 번호로 가입해요. 번호는 ",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    "안전하게",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.only(left: 20),
-                    child: const Text(
-                      "보관",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    "되며 어디에도 공개되지 않아요.",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
               ),
               Center(
                 child: Container(
@@ -100,6 +111,13 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.only(top: 30),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
+                    onChanged: (text) {
+                      setState(() {
+                        if(text.length >= 11) {
+                          phoneValid = true;
+                        }
+                      });
+                    },
                     controller: phoneNumber,
                     maxLength: 11,
                     keyboardType: TextInputType.number,
@@ -128,13 +146,18 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (phoneNumber.text.length == 11) {
-                      // 위젯 이벤트
-                    }
+                    setState(() {
+                      if (phoneValid) {
+                        // 위젯 이벤트
+                        widgetVisible = true;
+                        buttonText = '인증문자 다시 받기';
+                        print('push 인증문자 받기');
+                      }
+                    });
                   },
-                  child: const Text(
-                    '인증문자 받기',
-                    style: TextStyle(
+                  child: Text(
+                    buttonText,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -146,34 +169,124 @@ class _LoginPageState extends State<LoginPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7.5),
                     ),
-                    primary: phoneNumber.text.length == 11 ? Colors.black38 : Colors.black12,
+                    primary: phoneValid ? Colors.black38 : Colors.black12,
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    "휴대폰 번호가 변경되었나요?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 5),
-                    child: const Text(
-                      "이메일로 계정찾기",
+              Visibility(
+                visible: !widgetVisible ? true : false,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      "휴대폰 번호가 변경되었나요?",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.normal,
-                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 5),
+                      child: const Text(
+                        "이메일로 계정찾기",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Visibility(
+                visible: widgetVisible,
+                child: Center(
+                  child: Container(
+                    height: 60,
+                    margin: const EdgeInsets.only(top: 10),
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: TextFormField(
+                      onChanged: (text) {
+                        setState(() {
+                          if(text.length >= 6) {
+                            certificationValid = true;
+                          }
+                        });
+                      },
+                      maxLength: 6,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                      ],
+                      decoration: const InputDecoration(
+                        counterText:'',
+                        hintText: '인증번호를 입력해주세요',
+                        contentPadding: EdgeInsets.all(15),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(7.5)
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ],
+                ),
+              ),
+              Visibility(
+                visible: widgetVisible,
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.only(left: 25),
+                  child: const Text(
+                    "어떠한 경우에도 타인에게 공유하지 마세요!",
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: widgetVisible,
+                child: Container(
+                  margin: const EdgeInsets.only(top:10, bottom: 20),
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        if (certificationValid) {
+                          // 버튼 이벤트
+
+                          print('push 인증번호 확인');
+                        }
+                      });
+                    },
+                    child: const Text(
+                      '인증번호 확인',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      splashFactory: NoSplash.splashFactory,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7.5),
+                      ),
+                      primary: certificationValid ? Colors.deepOrangeAccent : Colors.black12,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

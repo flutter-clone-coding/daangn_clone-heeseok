@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:daangn_clone/mainview/home/home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -115,6 +116,8 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {
                         if(text.length >= 11) {
                           phoneValid = true;
+                        } else {
+                          phoneValid = false;
                         }
                       });
                     },
@@ -213,6 +216,8 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {
                           if(text.length >= 6) {
                             certificationValid = true;
+                          } else {
+                            certificationValid = false;
                           }
                         });
                       },
@@ -264,8 +269,11 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {
                         if (certificationValid) {
                           // 버튼 이벤트
-
                           print('push 인증번호 확인');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                          );
                         }
                       });
                     },
@@ -300,7 +308,7 @@ void showToast(String message) {
   Fluttertoast.showToast(
       msg: message,
       textColor: Colors.white,
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.black54,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM
   );

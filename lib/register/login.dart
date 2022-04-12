@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:daangn_clone/mainview/home/home.dart';
+import 'package:daangn_clone/mainview/mainview.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -272,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
                           print('push 인증번호 확인');
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
+                            MaterialPageRoute(builder: (context) => MainViewPage()),
                           );
                         }
                       });

@@ -11,6 +11,8 @@ class MainViewPage extends StatefulWidget {
 class _MainViewPageState extends State<MainViewPage> {
 
   int _selectedIndex = 0;
+  bool _floatingVisible = false;
+  var _icon = Icons.add;
 
   static const TextStyle optionStyle = TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
@@ -36,6 +38,18 @@ class _MainViewPageState extends State<MainViewPage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      // floatingActionButton visibility
+      if(_selectedIndex == 0 || _selectedIndex == 1) {
+        _floatingVisible = true;
+      } else {
+        _floatingVisible = false;
+      }
+      // floatingActionButton icon
+      if(_selectedIndex == 0) {
+        _icon = Icons.add;
+      } else {
+        _icon = Icons.edit;
+      }
     });
   }
 
@@ -44,14 +58,21 @@ class _MainViewPageState extends State<MainViewPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrangeAccent,
-        child: Icon(Icons.add),
-        onPressed: () {},
+      floatingActionButton: Visibility(
+        visible: _floatingVisible,
+        child: FloatingActionButton(
+          elevation: 0,
+          highlightElevation: 25,
+          backgroundColor: Colors.deepOrangeAccent,
+          child: Icon(_icon),
+          onPressed: () {
+
+          },
+        ),
       ),
       appBar: AppBar(
         leadingWidth: 20,
-        title: Text(
+        title: const Text(
           '내 동네',
           style: TextStyle(
             fontSize: 18,
@@ -66,21 +87,21 @@ class _MainViewPageState extends State<MainViewPage> {
         actions: <Widget>[
           IconButton(
             onPressed: () => {},
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               color: Colors.black,
             ),
           ),
           IconButton(
             onPressed: () => {},
-            icon: Icon(
+            icon: const Icon(
               Icons.menu,
               color: Colors.black,
             ),
           ),
           IconButton(
             onPressed: () => {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications_outlined,
               color: Colors.black,
             ),
@@ -94,7 +115,7 @@ class _MainViewPageState extends State<MainViewPage> {
         // onTap: (index) => {},
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: '홈',

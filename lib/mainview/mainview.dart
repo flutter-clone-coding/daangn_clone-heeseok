@@ -11,7 +11,7 @@ class MainViewPage extends StatefulWidget {
 class _MainViewPageState extends State<MainViewPage> {
 
   int _selectedIndex = 0;
-  bool _floatingVisible = false;
+  bool _floatingVisible = true;
   var _icon = Icons.add;
 
   static const TextStyle optionStyle = TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
@@ -72,12 +72,25 @@ class _MainViewPageState extends State<MainViewPage> {
       ),
       appBar: AppBar(
         leadingWidth: 20,
-        title: const Text(
-          '내 동네',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+        title: GestureDetector(
+          onTap: () {
+            print('내 동네 click');
+          },
+          child: Row(
+            children: const [
+              Text(
+                '내 동네',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              Icon(
+                Icons.expand_more,
+                color: Colors.black,
+              ),
+            ],
           ),
         ),
         centerTitle: false,

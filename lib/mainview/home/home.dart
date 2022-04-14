@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.white,
                     border: Border.all(color: Colors.black12),
                   ),
-                  child: FittedBox(
+                  child: const FittedBox(
                     child: Image(
                       image: AssetImage('lib/asset/mainview_lion.png'),
                     ),
@@ -41,13 +41,13 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: MediaQuery.of(context).size.width - 120 - 40,
                   height: 120,
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   child: Column(
                     children: [
                       Container(
                         alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(bottom: 3),
-                        child: Text(
+                        margin: const EdgeInsets.only(bottom: 3),
+                        child: const Text(
                           "분양합니다.",
                           style: TextStyle(
                             fontSize: 18,
@@ -57,8 +57,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(bottom: 3),
-                        child: Text(
+                        margin: const EdgeInsets.only(bottom: 3),
+                        child: const Text(
                           "부산진구 초읍동 · 끌올 5분전",
                           style: TextStyle(
                             fontSize: 13,
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: const Text(
                           "300,000원",
                           style: TextStyle(
                             fontSize: 16,
@@ -77,20 +77,20 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Row(
                         children: [
-                          Spacer(),
+                          const Spacer(),
                           Container(
-                            margin: EdgeInsets.only(right: 3),
-                            child: Icon(
+                            margin: const EdgeInsets.only(right: 3),
+                            child: const Icon(
                               Icons.chat_bubble_outline,
                               size: 18,
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 5),
-                            child: Text(
+                            margin: const EdgeInsets.only(right: 5),
+                            child: const Text(
                               '2',
                               style: TextStyle(
                                   fontSize: 18
@@ -98,15 +98,15 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 3),
-                            child: Icon(
+                            margin: const EdgeInsets.only(right: 3),
+                            child: const Icon(
                               Icons.question_answer_outlined,
                               size: 18,
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 3),
-                            child: Text(
+                            margin: const EdgeInsets.only(right: 3),
+                            child: const Text(
                               '3',
                               style: TextStyle(
                                   fontSize: 18
@@ -114,18 +114,16 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 3),
-                            child: Icon(
+                            margin: const EdgeInsets.only(right: 3),
+                            child: const Icon(
                               Icons.favorite_border,
                               size: 18,
                             ),
                           ),
-                          Container(
-                            child: Text(
-                              '3',
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
+                          const Text(
+                            '3',
+                            style: TextStyle(
+                              fontSize: 18,
                             ),
                           ),
                         ],

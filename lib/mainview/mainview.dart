@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daangn_clone/mainview/home/home.dart';
+import 'package:daangn_clone/mainview/neighborhood/neighborhood.dart';
 
 class MainViewPage extends StatefulWidget {
   const MainViewPage({Key? key}) : super(key: key);
@@ -17,10 +18,7 @@ class _MainViewPageState extends State<MainViewPage> {
   static const TextStyle optionStyle = TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Index 1: 동네생활',
-      style: optionStyle,
-    ),
+    NeighborhoodPage(),
     Text(
       'Index 2: 내 근처',
       style: optionStyle,

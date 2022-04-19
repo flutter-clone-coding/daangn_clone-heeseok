@@ -204,11 +204,14 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                                   children: [
                                     Container(
                                       margin: const EdgeInsets.only(right: 5),
-                                      width: MediaQuery.of(context).size.width * 0.45,
+                                      width: MediaQuery.of(context).size.width * 0.468,
                                       height: 200,
                                       clipBehavior: Clip.hardEdge,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(7.5),
+                                          bottomLeft: Radius.circular(7.5),
+                                        ),
                                         color: Colors.white,
                                         border: Border.all(color: Colors.black12),
                                       ),
@@ -223,11 +226,13 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                                       children: [
                                         Container(
                                           margin: const EdgeInsets.only(bottom: 2.5),
-                                          width: MediaQuery.of(context).size.width * 0.45,
+                                          width: MediaQuery.of(context).size.width * 0.468,
                                           height: 97.5,
                                           clipBehavior: Clip.hardEdge,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(5),
+                                            borderRadius: const BorderRadius.only(
+                                              topRight: Radius.circular(7.5),
+                                            ),
                                             color: Colors.white,
                                             border: Border.all(color: Colors.black12),
                                           ),
@@ -240,11 +245,13 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                                         ),
                                         Container(
                                           margin: const EdgeInsets.only(top: 2.5),
-                                          width: MediaQuery.of(context).size.width * 0.45,
+                                          width: MediaQuery.of(context).size.width * 0.468,
                                           height: 97.5,
                                           clipBehavior: Clip.hardEdge,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(5),
+                                            borderRadius: const BorderRadius.only(
+                                              bottomRight: Radius.circular(7.5),
+                                            ),
                                             color: Colors.white,
                                             border: Border.all(color: Colors.black12),
                                           ),
@@ -256,7 +263,7 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                                           ),
                                         ),
                                       ],
-                                    )
+                                    ),
                                   ],
                                 ),
                               ) :
@@ -293,7 +300,7 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                                         fontSize: 12,
                                         color: Colors.grey,
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),

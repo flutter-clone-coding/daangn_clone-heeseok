@@ -15,6 +15,9 @@ class _MainViewPageState extends State<MainViewPage> {
   bool _floatingVisible = true;
   var _icon = Icons.add;
 
+  bool turnsCheck = false;
+  double turns = 0.0;
+
   static const TextStyle optionStyle = TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
@@ -51,6 +54,58 @@ class _MainViewPageState extends State<MainViewPage> {
     });
   }
 
+  void _showPopupMenu(){
+    showMenu<String>(
+      context: context,
+      position: const RelativeRect.fromLTRB(0.0, 100.0, 0.0, 0.0), //position where you want to show the menu on screen
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10.0),
+        ),
+      ),
+      elevation: 5.0,
+      items: [
+        PopupMenuItem<String>(
+            child: Container(
+              width: 150,
+              margin: const EdgeInsets.only(left: 10),
+              child: const Text(
+                '내 동네',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
+            value: '1',
+            onTap: () {
+                setState(() {
+                  turnsCheck = !turnsCheck;
+                  if(turnsCheck) {
+                    turns += 0.5;
+                  } else {
+                    turns -= 0.5;
+                  }
+                });
+            },
+        ),
+        PopupMenuItem<String>(
+            child: Container(
+              width: 150,
+              margin: const EdgeInsets.only(left: 10),
+              child: const Text(
+                '내 동네 설정',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            value: '2'
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,10 +128,19 @@ class _MainViewPageState extends State<MainViewPage> {
         title: GestureDetector(
           onTap: () {
             print('내 동네 click');
+            setState(() {
+              if(turnsCheck) {
+                turns -= 0.5;
+              } else {
+                turns += 0.5;
+                _showPopupMenu();
+              }
+              turnsCheck = !turnsCheck;
+            });
           },
           child: Row(
-            children: const [
-              Text(
+            children: [
+              const Text(
                 '내 동네',
                 style: TextStyle(
                   fontSize: 18,
@@ -84,9 +148,13 @@ class _MainViewPageState extends State<MainViewPage> {
                   color: Colors.black,
                 ),
               ),
-              Icon(
-                Icons.expand_more,
-                color: Colors.black,
+              AnimatedRotation(
+                turns: turns,
+                duration: const Duration(milliseconds: 300),
+                child: const Icon(
+                  Icons.expand_more,
+                  color: Colors.black,
+                ),
               ),
             ],
           ),

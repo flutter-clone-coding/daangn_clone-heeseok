@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daangn_clone/mainview/home/home.dart';
 import 'package:daangn_clone/mainview/neighborhood/neighborhood.dart';
+import 'package:daangn_clone/mainview/neighborhood/writetext.dart';
 
 class MainViewPage extends StatefulWidget {
   const MainViewPage({Key? key}) : super(key: key);
@@ -100,7 +101,8 @@ class _MainViewPageState extends State<MainViewPage> {
                 ),
               ),
             ),
-            value: '2'
+            value: '2',
+            onTap: () {},
         ),
       ],
     );
@@ -119,13 +121,18 @@ class _MainViewPageState extends State<MainViewPage> {
           backgroundColor: Colors.deepOrangeAccent,
           child: Icon(_icon),
           onPressed: () {
-
+            if(_selectedIndex == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WriteTextPage()),
+              );
+            }
           },
         ),
       ),
       appBar: AppBar(
         leadingWidth: 20,
-        title: GestureDetector(
+        title: _selectedIndex == 0 || _selectedIndex == 1 ? GestureDetector(
           onTap: () {
             print('내 동네 click');
             setState(() {
@@ -158,6 +165,13 @@ class _MainViewPageState extends State<MainViewPage> {
               ),
             ],
           ),
+        ) : Text(
+          _selectedIndex == 2 ? '내 근처' : _selectedIndex == 3 ? "채팅" : "나의 당근",
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
         ),
         centerTitle: false,
         titleSpacing: 0,
@@ -166,22 +180,32 @@ class _MainViewPageState extends State<MainViewPage> {
         actions: <Widget>[
           IconButton(
             onPressed: () => {},
-            icon: const Icon(
-              Icons.search,
+            icon: Icon(
+              _selectedIndex == 0 || _selectedIndex == 1 ?
+              Icons.search :
+              _selectedIndex == 2 ?
+              Icons.edit :
+              null,
               color: Colors.black,
             ),
           ),
           IconButton(
             onPressed: () => {},
-            icon: const Icon(
-              Icons.menu,
+            icon: Icon(
+              _selectedIndex == 0 ?
+              Icons.menu :
+              _selectedIndex == 1 ?
+              Icons.menu_open :
+              _selectedIndex == 2 || _selectedIndex == 3 ?
+              Icons.qr_code :
+              null,
               color: Colors.black,
             ),
           ),
           IconButton(
             onPressed: () => {},
-            icon: const Icon(
-              Icons.notifications_outlined,
+            icon: Icon(
+              _selectedIndex == 4 ? Icons.settings :  Icons.notifications_outlined,
               color: Colors.black,
             ),
           ),

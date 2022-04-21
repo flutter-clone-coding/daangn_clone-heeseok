@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                         alignment: Alignment.topLeft,
                         child: Text(
                           price[index%10],
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,

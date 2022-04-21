@@ -16,7 +16,6 @@ class _MainViewPageState extends State<MainViewPage> {
   bool _floatingVisible = true;
   var _icon = Icons.add;
 
-  bool turnsCheck = false;
   double turns = 0.0;
 
   static const TextStyle optionStyle = TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
@@ -55,8 +54,8 @@ class _MainViewPageState extends State<MainViewPage> {
     });
   }
 
-  void _showPopupMenu(){
-    showMenu<String>(
+  Future<void> _showPopupMenu() async {
+    await showMenu<String>(
       context: context,
       position: const RelativeRect.fromLTRB(0.0, 100.0, 0.0, 0.0), //position where you want to show the menu on screen
       shape: const RoundedRectangleBorder(
@@ -78,16 +77,7 @@ class _MainViewPageState extends State<MainViewPage> {
               ),
             ),
             value: '1',
-            onTap: () {
-                setState(() {
-                  turnsCheck = !turnsCheck;
-                  if(turnsCheck) {
-                    turns += 0.5;
-                  } else {
-                    turns -= 0.5;
-                  }
-                });
-            },
+            onTap: () {},
         ),
         PopupMenuItem<String>(
             child: Container(
@@ -121,7 +111,9 @@ class _MainViewPageState extends State<MainViewPage> {
           backgroundColor: Colors.deepOrangeAccent,
           child: Icon(_icon),
           onPressed: () {
-            if(_selectedIndex == 1) {
+            if(_selectedIndex == 0) {
+              print("${_selectedIndex} floating button click!");
+            } else if (_selectedIndex == 1) {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => WriteTextPage()),
@@ -133,16 +125,17 @@ class _MainViewPageState extends State<MainViewPage> {
       appBar: AppBar(
         leadingWidth: 20,
         title: _selectedIndex == 0 || _selectedIndex == 1 ? GestureDetector(
-          onTap: () {
-            print('내 동네 click');
+          onTap: () async {
             setState(() {
-              if(turnsCheck) {
-                turns -= 0.5;
-              } else {
-                turns += 0.5;
-                _showPopupMenu();
-              }
-              turnsCheck = !turnsCheck;
+              turns += 0.5;
+              print("click showPopupMenu");
+            });
+            // setState --> Future
+            await _showPopupMenu();
+            // setStat --> turns
+            setState(() {
+              turns -= 0.5;
+              print("close showPopupMenu");
             });
           },
           child: Row(

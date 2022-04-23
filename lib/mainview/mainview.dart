@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daangn_clone/mainview/home/home.dart';
 import 'package:daangn_clone/mainview/neighborhood/neighborhood.dart';
 import 'package:daangn_clone/mainview/neighborhood/writetext.dart';
+import 'package:daangn_clone/mainview/chat/chat.dart';
 
 class MainViewPage extends StatefulWidget {
   const MainViewPage({Key? key}) : super(key: key);
@@ -26,10 +27,7 @@ class _MainViewPageState extends State<MainViewPage> {
       'Index 2: 내 근처',
       style: optionStyle,
     ),
-    Text(
-      'Index 3: 채팅',
-      style: optionStyle,
-    ),
+    ChatPage(),
     Text(
       'Index 4: 당근',
       style: optionStyle,
@@ -177,7 +175,7 @@ class _MainViewPageState extends State<MainViewPage> {
               _selectedIndex == 0 || _selectedIndex == 1 ?
               Icons.search :
               _selectedIndex == 2 ?
-              Icons.edit :
+              Icons.edit_outlined :
               null,
               color: Colors.black,
             ),
@@ -198,7 +196,7 @@ class _MainViewPageState extends State<MainViewPage> {
           IconButton(
             onPressed: () => {},
             icon: Icon(
-              _selectedIndex == 4 ? Icons.settings :  Icons.notifications_outlined,
+              _selectedIndex == 4 ? Icons.settings_outlined :  Icons.notifications_outlined,
               color: Colors.black,
             ),
           ),

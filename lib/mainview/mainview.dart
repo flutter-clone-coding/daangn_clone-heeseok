@@ -3,6 +3,7 @@ import 'package:daangn_clone/mainview/home/home.dart';
 import 'package:daangn_clone/mainview/neighborhood/neighborhood.dart';
 import 'package:daangn_clone/mainview/neighborhood/writetext.dart';
 import 'package:daangn_clone/mainview/chat/chat.dart';
+import 'package:daangn_clone/mainview/mypage/mypage.dart';
 
 class MainViewPage extends StatefulWidget {
   const MainViewPage({Key? key}) : super(key: key);
@@ -28,10 +29,7 @@ class _MainViewPageState extends State<MainViewPage> {
       style: optionStyle,
     ),
     ChatPage(),
-    Text(
-      'Index 4: 당근',
-      style: optionStyle,
-    ),
+    MyPage(),
   ];
 
   void _onItemTapped(int index) {

@@ -52,302 +52,310 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xfff5f5f5),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.only(top: 10, bottom: 10),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(17, (index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                            width: 1,
-                            color: Color(0xffd3d3d3),
-                          ),
-                          borderRadius: BorderRadius.circular(5)
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(17, (index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          width: 1,
+                          color: const Color(0xffd3d3d3),
                         ),
-                        margin: const EdgeInsets.only(left: 10, right: 10),
-                        padding: const EdgeInsets.all(10),
-                        child: Text(
-                          cards[index],
-                          style: const TextStyle(
-                            fontSize: 13,
-                          ),
-                        ),
-                    );
-                  }),
-                ),
-              ),
-            ),
-            Column(
-              children: List.generate(15, (index) {
-                return index == 1 ? Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    border: Border(bottom: BorderSide(
-                      width: 5,
-                        color: Color(0xfff5f5f5),
-                    )),
-                  ),
-                  padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 60,
-                        height: 60,
-                        clipBehavior: Clip.hardEdge,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black12),
-                        ),
-                        child: const FittedBox(
-                          child: Image(
-                            image: AssetImage('lib/asset/neighborhood/pink_camera.jpg'),
-                          ),
-                          fit: BoxFit.fill,
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      margin: const EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        cards[index],
+                        style: const TextStyle(
+                          fontSize: 13,
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 10),
+                  );
+                }),
+              ),
+            ),
+          ),
+          Container(
+            height: 1,
+            margin: const EdgeInsets.only(left: 10, right: 10),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(bottom: BorderSide(
+                width: 1,
+                color: Color(0xffd3d3d3),
+              )),
+            ),
+          ),
+          Column(
+            children: List.generate(15, (index) {
+              return index == 1 ? Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  border: Border(bottom: BorderSide(
+                    width: 5,
+                      color: Color(0xfff5f5f5),
+                  )),
+                ),
+                padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: 60,
+                      height: 60,
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black12),
+                      ),
+                      child: const FittedBox(
+                        child: Image(
+                          image: AssetImage('lib/asset/neighborhood/pink_camera.jpg'),
+                        ),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 3),
+                            child: const Text(
+                              "내 동네 벚꽃 명소를 아시나요?",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 3),
+                            child: const Text(
+                              "소소한 동네 벚꽃 사진을 공유해보세요",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black38,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+              : Container(
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  border: Border(bottom: BorderSide(
+                      width: 5,
+                      color: Color(0xfff5f5f5),
+                  )),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                        border: Border(bottom: BorderSide(color: Colors.black12)),
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: const EdgeInsets.only(bottom: 3),
-                              child: const Text(
-                                "내 동네 벚꽃 명소를 아시나요?",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black,
+                              width: 80,
+                              margin: const EdgeInsets.only(top: 5),
+                              padding: const EdgeInsets.only(top: 3, bottom: 3, left: 7.5, right: 7.5),
+                              decoration: BoxDecoration(
+                                color: const Color(0xfff5f5f5),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  index%2 == 0 ? cards[3] : cards[1],
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.black54,
+                                  ),
                                 ),
                               ),
                             ),
                             Container(
-                              margin: const EdgeInsets.only(bottom: 3),
-                              child: const Text(
-                                "소소한 동네 벚꽃 사진을 공유해보세요",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black38,
+                              margin: const EdgeInsets.only(top: 20),
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <TextSpan>[
+                                    index%2 == 0 ? const TextSpan(text: "") : const TextSpan(text: "Q. ", style: TextStyle(fontSize: 18, color: Colors.deepOrangeAccent)),
+                                    TextSpan(text: maintext[index%10], style: const TextStyle(fontSize: 16)),
+                                  ],
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-                : Container(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    border: Border(bottom: BorderSide(
-                        width: 5,
-                        color: Color(0xfff5f5f5),
-                    )),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: const BoxDecoration(
-                          border: Border(bottom: BorderSide(color: Colors.black12)),
-                        ),
-                        child: Container(
-                          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 80,
-                                margin: const EdgeInsets.only(top: 5),
-                                padding: const EdgeInsets.only(top: 3, bottom: 3, left: 7.5, right: 7.5),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xfff5f5f5),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    index%2 == 0 ? cards[3] : cards[1],
-                                    style: const TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.black54,
+                            index%10 == 0 ?
+                            Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 5),
+                                    width: MediaQuery.of(context).size.width * 0.468,
+                                    height: 200,
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(7.5),
+                                        bottomLeft: Radius.circular(7.5),
+                                      ),
+                                      color: Colors.white,
+                                      border: Border.all(color: Colors.black12),
+                                    ),
+                                    child: const FittedBox(
+                                      child: Image(
+                                        image: AssetImage('lib/asset/neighborhood/mountain1.jpg'),
+                                      ),
+                                      fit: BoxFit.fill,
                                     ),
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(top: 20),
-                                child: Text.rich(
-                                  TextSpan(
-                                    children: <TextSpan>[
-                                      index%2 == 0 ? const TextSpan(text: "") : TextSpan(text: "Q. ", style: TextStyle(fontSize: 18, color: Colors.deepOrangeAccent)),
-                                      TextSpan(text: maintext[index%10], style: TextStyle(fontSize: 16)),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.only(bottom: 2.5),
+                                        width: MediaQuery.of(context).size.width * 0.468,
+                                        height: 97.5,
+                                        clipBehavior: Clip.hardEdge,
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                            topRight: Radius.circular(7.5),
+                                          ),
+                                          color: Colors.white,
+                                          border: Border.all(color: Colors.black12),
+                                        ),
+                                        child: const FittedBox(
+                                          child: Image(
+                                            image: AssetImage('lib/asset/neighborhood/mountain2.jpg'),
+                                          ),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 2.5),
+                                        width: MediaQuery.of(context).size.width * 0.468,
+                                        height: 97.5,
+                                        clipBehavior: Clip.hardEdge,
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                            bottomRight: Radius.circular(7.5),
+                                          ),
+                                          color: Colors.white,
+                                          border: Border.all(color: Colors.black12),
+                                        ),
+                                        child: const FittedBox(
+                                          child: Image(
+                                            image: AssetImage('lib/asset/neighborhood/mountain3.jpg'),
+                                          ),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
                                     ],
                                   ),
-                                ),
+                                ],
                               ),
-                              index%10 == 0 ?
-                              Container(
-                                margin: const EdgeInsets.only(top: 20),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(right: 5),
-                                      width: MediaQuery.of(context).size.width * 0.468,
-                                      height: 200,
-                                      clipBehavior: Clip.hardEdge,
-                                      decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(7.5),
-                                          bottomLeft: Radius.circular(7.5),
-                                        ),
-                                        color: Colors.white,
-                                        border: Border.all(color: Colors.black12),
-                                      ),
-                                      child: const FittedBox(
-                                        child: Image(
-                                          image: AssetImage('lib/asset/neighborhood/mountain1.jpg'),
-                                        ),
-                                        fit: BoxFit.fill,
-                                      ),
+                            ) :
+                            Container(),
+                            Container(
+                              margin: const EdgeInsets.only(top: 30, bottom: 5),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    nickname[index%10],
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
                                     ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          margin: const EdgeInsets.only(bottom: 2.5),
-                                          width: MediaQuery.of(context).size.width * 0.468,
-                                          height: 97.5,
-                                          clipBehavior: Clip.hardEdge,
-                                          decoration: BoxDecoration(
-                                            borderRadius: const BorderRadius.only(
-                                              topRight: Radius.circular(7.5),
-                                            ),
-                                            color: Colors.white,
-                                            border: Border.all(color: Colors.black12),
-                                          ),
-                                          child: const FittedBox(
-                                            child: Image(
-                                              image: AssetImage('lib/asset/neighborhood/mountain2.jpg'),
-                                            ),
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: const EdgeInsets.only(top: 2.5),
-                                          width: MediaQuery.of(context).size.width * 0.468,
-                                          height: 97.5,
-                                          clipBehavior: Clip.hardEdge,
-                                          decoration: BoxDecoration(
-                                            borderRadius: const BorderRadius.only(
-                                              bottomRight: Radius.circular(7.5),
-                                            ),
-                                            color: Colors.white,
-                                            border: Border.all(color: Colors.black12),
-                                          ),
-                                          child: const FittedBox(
-                                            child: Image(
-                                              image: AssetImage('lib/asset/neighborhood/mountain3.jpg'),
-                                            ),
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      ],
+                                  ),
+                                  const Text(
+                                    " · ",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
                                     ),
-                                  ],
-                                ),
-                              ) :
-                              Container(),
-                              Container(
-                                margin: const EdgeInsets.only(top: 30, bottom: 5),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      nickname[index%10],
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey,
-                                      ),
+                                  ),
+                                  Text(
+                                    region[index%10],
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
                                     ),
-                                    const Text(
-                                      " · ",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey,
-                                      ),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    "${index + 1}시간전",
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
                                     ),
-                                    Text(
-                                      region[index%10],
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      "${index + 1}시간전",
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      // 하단 아이콘 container
-                      Container(
-                        padding: const EdgeInsets.only(top: 10,left: 10, right: 10),
-                        child: Row(
-                          children: [
-                            Icon(
-                              index%2 == 0 ?
-                              Icons.sentiment_satisfied_alt :
-                              Icons.task_alt,
-                              color: Colors.grey,
-                            ),
-                            const SizedBox(width: 5,),
-                            Text(
-                                index%2 == 0 ? "공감하기" : "궁금해요",
-                              style: const TextStyle(
-                                color: Colors.grey,
+                                  ),
+                                ],
                               ),
                             ),
-                            const SizedBox(width: 15,),
-                            const Icon(
-                              Icons.mode_comment_outlined,
-                              color: Colors.grey,
-                            ),
-                            const SizedBox(width: 5,),
-                            Text(
-                              index%2 == 0 ? "댓글쓰기" : '답변 ${index}',
-                              style: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                            )
                           ],
                         ),
                       ),
-                    ],
-                  ),
-                );
-              }),
-            ),
-          ],
-        ),
+                    ),
+                    // 하단 아이콘 container
+                    Container(
+                      padding: const EdgeInsets.only(top: 10,left: 10, right: 10),
+                      child: Row(
+                        children: [
+                          Icon(
+                            index%2 == 0 ?
+                            Icons.sentiment_satisfied_alt :
+                            Icons.task_alt,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(width: 5,),
+                          Text(
+                              index%2 == 0 ? "공감하기" : "궁금해요",
+                            style: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          const SizedBox(width: 15,),
+                          const Icon(
+                            Icons.mode_comment_outlined,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(width: 5,),
+                          Text(
+                            index%2 == 0 ? "댓글쓰기" : '답변 ${index}',
+                            style: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+          ),
+        ],
       ),
     );
   }

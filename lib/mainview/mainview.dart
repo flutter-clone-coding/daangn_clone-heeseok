@@ -4,6 +4,7 @@ import 'package:daangn_clone/mainview/neighborhood/neighborhood.dart';
 import 'package:daangn_clone/mainview/neighborhood/writetext.dart';
 import 'package:daangn_clone/mainview/chat/chat.dart';
 import 'package:daangn_clone/mainview/mypage/mypage.dart';
+import 'package:daangn_clone/mainview/mynear/mynear.dart';
 
 class MainViewPage extends StatefulWidget {
   const MainViewPage({Key? key}) : super(key: key);
@@ -24,10 +25,7 @@ class _MainViewPageState extends State<MainViewPage> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     NeighborhoodPage(),
-    Text(
-      'Index 2: 내 근처',
-      style: optionStyle,
-    ),
+    MyNearPage(),
     ChatPage(),
     MyPage(),
   ];

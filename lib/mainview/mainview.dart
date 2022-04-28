@@ -5,6 +5,7 @@ import 'package:daangn_clone/mainview/neighborhood/writetext.dart';
 import 'package:daangn_clone/mainview/chat/chat.dart';
 import 'package:daangn_clone/mainview/mypage/mypage.dart';
 import 'package:daangn_clone/mainview/mynear/mynear.dart';
+import 'package:daangn_clone/mainview/home/floatingButtonPage.dart';
 
 class MainViewPage extends StatefulWidget {
   const MainViewPage({Key? key}) : super(key: key);
@@ -107,6 +108,16 @@ class _MainViewPageState extends State<MainViewPage> {
           onPressed: () {
             if(_selectedIndex == 0) {
               print("${_selectedIndex} floating button click!");
+              Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    opaque: false,
+                    pageBuilder: (context, animation, secondaryAnimation) => FloatingButtonPage(),
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                      return FadeTransition(opacity: animation, child: child,);
+                    },
+                  ),
+              );
             } else if (_selectedIndex == 1) {
               Navigator.push(
                 context,

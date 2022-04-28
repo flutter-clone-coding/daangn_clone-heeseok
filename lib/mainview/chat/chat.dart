@@ -66,94 +66,92 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: List.generate(15, (index) {
-          return Container(
-            decoration: const BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.black12)),
-            ),
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 55,
-                  height: 55,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.white,
-                    border: index == 9 ? Border.all(color: Colors.black12) : null,
-                  ),
-                  child: FittedBox(
-                    child: Image(
-                      image: AssetImage(profile[index%10]),
-                    ),
-                    fit: BoxFit.fill,
-                  ),
+    return ListView(
+      children: List.generate(15, (index) {
+        return Container(
+          decoration: const BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.black12)),
+          ),
+          padding: const EdgeInsets.only(top: 10, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 55,
+                height: 55,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white,
+                  border: index == 9 ? Border.all(color: Colors.black12) : null,
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            users[index%10],
-                            style: const TextStyle(
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(width: 5,),
-                          Text(
-                            region[index%10] + " · ${index+1}달 전",
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 5,),
-                      SizedBox(
-                        width: 225,
-                        child: Text(
-                          text[index%10],
-                          overflow: TextOverflow.ellipsis,
+                child: FittedBox(
+                  child: Image(
+                    image: AssetImage(profile[index%10]),
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          users[index%10],
                           style: const TextStyle(
                             fontSize: 15,
                             color: Colors.black,
                           ),
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 20,),
-                Container(
-                  width: 55,
-                  height: 55,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7.5),
-                    color: Colors.white,
-                    border: Border.all(color: Colors.black12),
-                  ),
-                  child: FittedBox(
-                    child: Image(
-                      image: AssetImage(images[index%10]),
+                        const SizedBox(width: 5,),
+                        Text(
+                          region[index%10] + " · ${index+1}달 전",
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        )
+                      ],
                     ),
-                    fit: BoxFit.fill,
-                  ),
+                    const SizedBox(height: 5,),
+                    SizedBox(
+                      width: 225,
+                      child: Text(
+                        text[index%10],
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              ],
-            ),
-          );
-        }),
-      ),
+              ),
+              const SizedBox(width: 20,),
+              Container(
+                width: 55,
+                height: 55,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7.5),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black12),
+                ),
+                child: FittedBox(
+                  child: Image(
+                    image: AssetImage(images[index%10]),
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

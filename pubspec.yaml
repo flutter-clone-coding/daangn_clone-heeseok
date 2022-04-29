@@ -71,6 +71,7 @@ flutter:
    - lib/asset/neighborhood/
    - lib/asset/chat/
    - lib/asset/mypage/
+   - lib/asset/mynear/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

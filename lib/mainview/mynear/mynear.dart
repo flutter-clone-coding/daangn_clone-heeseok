@@ -9,18 +9,22 @@ class MyNearPage extends StatefulWidget {
 
 class _MyNearPageState extends State<MyNearPage> {
 
-  var cards = [
-    '인기',
-    '아파트매매',
-    '전세',
-    '네일',
-    '투룸',
-    '속눈썹펌',
-    '원룸',
-    '오피스텔',
-    '헬스',
-    '아파트',
-    '아르바이트',
+  final cards = [
+    '인기', '아파트매매', '전세', '네일', '투룸', '속눈썹펌', '원룸', '오피스텔', '헬스', '아파트', '아르바이트',
+  ];
+
+  final _gridIcon = [
+    "lib/asset/mynear/coupon.png",
+    "lib/asset/mynear/apron.png",
+    "lib/asset/mynear/real-state.png",
+    "lib/asset/mynear/vegetable.png",
+    "lib/asset/mynear/car.png",
+    "lib/asset/mynear/blackboard.png",
+    "lib/asset/mynear/shipping.png",
+  ];
+
+  final _gridText = [
+    "쿠폰북", "당근알바", "부동산 직거래", "농수산물", "중고차", "과외/클래스", "당근미니",
   ];
 
   @override
@@ -90,7 +94,43 @@ class _MyNearPageState extends State<MyNearPage> {
               border: Border(bottom: BorderSide(
                 width: 1,
                 color: Color(0xffd3d3d3),
-              )),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(top: 30, bottom: 27.5),
+            height: 225,
+            decoration: const BoxDecoration(
+              border : Border(bottom: BorderSide(
+                width: 10,
+                color: Color(0xfff5f5f5),
+                ),
+              ),
+            ),
+            child: GridView.builder(
+              itemCount: 7,
+              padding: const EdgeInsets.all(0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4, //1 개의 행에 보여줄 item 개수
+                childAspectRatio: 1/0.9, //item 의 가로 1, 세로 2 의 비율
+                mainAxisSpacing: 1, //수평 Padding
+                crossAxisSpacing: 1, //수직 Padding
+
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
+                  children: [
+                    SizedBox(
+                      width: 35,
+                      height: 35,
+                      child: Image.asset(_gridIcon[index]),
+                    ),
+                    const SizedBox(height: 5,),
+                    Text(_gridText[index]),
+                  ],
+                );
+              },
             ),
           ),
         ],

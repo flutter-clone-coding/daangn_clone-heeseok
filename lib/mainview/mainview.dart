@@ -16,6 +16,8 @@ class MainViewPage extends StatefulWidget {
 
 class _MainViewPageState extends State<MainViewPage> {
 
+  final GlobalKey _widgetKey = GlobalKey();
+
   int _selectedIndex = 0;
   bool _floatingVisible = true;
   var _icon = Icons.add;
@@ -93,6 +95,13 @@ class _MainViewPageState extends State<MainViewPage> {
     );
   }
 
+  _getPosition(GlobalKey key) {
+    if (key.currentContext != null) {
+      final RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
+      final position = renderBox.localToGlobal(Offset.zero); return position;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,6 +110,7 @@ class _MainViewPageState extends State<MainViewPage> {
       floatingActionButton: Visibility(
         visible: _floatingVisible,
         child: FloatingActionButton(
+          key: _widgetKey,
           elevation: 0,
           highlightElevation: 25,
           backgroundColor: Colors.deepOrangeAccent,
@@ -112,7 +122,10 @@ class _MainViewPageState extends State<MainViewPage> {
                   context,
                   PageRouteBuilder(
                     opaque: false,
-                    pageBuilder: (context, animation, secondaryAnimation) => FloatingButtonPage(),
+                    pageBuilder: (context, animation, secondaryAnimation) => FloatingButtonPage(
+                      dx: _getPosition(_widgetKey).dx,
+                      dy: _getPosition(_widgetKey).dy,
+                    ),
                     transitionsBuilder: (context, animation, secondaryAnimation, child) {
                       return FadeTransition(opacity: animation, child: child,);
                     },

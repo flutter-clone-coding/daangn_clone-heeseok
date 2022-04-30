@@ -7,7 +7,22 @@ class MyNearPage extends StatefulWidget {
   _MyNearPageState createState() => _MyNearPageState();
 }
 
-class _MyNearPageState extends State<MyNearPage> {
+class _MyNearPageState extends State<MyNearPage> with TickerProviderStateMixin {
+
+  late TabController _nestedTabController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _nestedTabController = new TabController(length: 5, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _nestedTabController.dispose();
+  }
 
   final cards = [
     '인기', '아파트매매', '전세', '네일', '투룸', '속눈썹펌', '원룸', '오피스텔', '헬스', '아파트', '아르바이트',
@@ -109,6 +124,7 @@ class _MyNearPageState extends State<MyNearPage> {
               ),
             ),
             child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: 7,
               padding: const EdgeInsets.all(0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -132,6 +148,74 @@ class _MyNearPageState extends State<MyNearPage> {
                 );
               },
             ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              TabBar(
+                controller: _nestedTabController,
+                indicatorColor: Colors.teal,
+                labelColor: Colors.teal,
+                unselectedLabelColor: Colors.black54,
+                isScrollable: true,
+                tabs: <Widget>[
+                  Tab(
+                    text: "One",
+                  ),
+                  Tab(
+                    text: "Two",
+                  ),
+                  Tab(
+                    text: "Three",
+                  ),
+                  Tab(
+                    text: "Four",
+                  ),
+                  Tab(
+                    text: "Five",
+                  ),
+                ],
+              ),
+              Container(
+                height: 300,
+                margin: EdgeInsets.only(left: 16.0, right: 16.0),
+                child: TabBarView(
+                  controller: _nestedTabController,
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.orangeAccent,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.greenAccent,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.indigoAccent,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.redAccent,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ],
       ),

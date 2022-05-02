@@ -69,6 +69,7 @@ class _ChatPageState extends State<ChatPage> {
     return ListView(
       children: List.generate(15, (index) {
         return Container(
+          width: MediaQuery.of(context).size.width * 0.95,
           decoration: const BoxDecoration(
             border: Border(bottom: BorderSide(color: Colors.black12)),
           ),

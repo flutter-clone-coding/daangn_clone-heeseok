@@ -20,6 +20,7 @@ class _TabItem2PagePageState extends State<TabItem2Page> {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+          width: MediaQuery.of(context).size.width * 0.95,
           height: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),

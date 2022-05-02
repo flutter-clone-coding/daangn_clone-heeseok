@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:daangn_clone/mainview/mynear/tabItem1.dart';
+import 'package:daangn_clone/mainview/mynear/tabItem2.dart';
 
 class MyNearPage extends StatefulWidget {
   const MyNearPage({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class _MyNearPageState extends State<MyNearPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _nestedTabController = new TabController(length: 5, vsync: this);
+    _nestedTabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -152,66 +154,61 @@ class _MyNearPageState extends State<MyNearPage> with TickerProviderStateMixin {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              TabBar(
-                controller: _nestedTabController,
-                indicatorColor: Colors.teal,
-                labelColor: Colors.teal,
-                unselectedLabelColor: Colors.black54,
-                isScrollable: true,
-                tabs: <Widget>[
-                  Tab(
-                    text: "One",
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.only(top: 20, bottom: 10, left: 16),
+                child: const Text(
+                  "이웃과 직접 만드는 동네 지도",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                  Tab(
-                    text: "Two",
-                  ),
-                  Tab(
-                    text: "Three",
-                  ),
-                  Tab(
-                    text: "Four",
-                  ),
-                  Tab(
-                    text: "Five",
-                  ),
-                ],
+                ),
               ),
               Container(
-                height: 300,
-                margin: EdgeInsets.only(left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(left: 20),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  border: Border(bottom: BorderSide(
+                      width: 1,
+                      color: Color(0xffd3d3d3),
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TabBar(
+                    controller: _nestedTabController,
+                    indicatorColor: Colors.black,
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.black54,
+                    isScrollable: true,
+                    tabs: const <Widget>[
+                      Tab(
+                        text: "동네맛집 31",
+                      ),
+                      Tab(
+                        text: "겨울간식 45",
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                height: 525,
+                padding: const EdgeInsets.only(top: 20,),
+                decoration: const BoxDecoration(
+                  border : Border(bottom: BorderSide(
+                      width: 10,
+                      color: Color(0xfff5f5f5),
+                    ),
+                  ),
+                ),
                 child: TabBarView(
                   controller: _nestedTabController,
                   children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.blueAccent,
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.orangeAccent,
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.greenAccent,
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.indigoAccent,
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.redAccent,
-                      ),
-                    ),
+                    TabItem1Page(),
+                    TabItem2Page(),
                   ],
                 ),
               )

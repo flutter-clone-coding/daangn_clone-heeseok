@@ -71,7 +71,7 @@ class _FloatingButtonPageState extends State<FloatingButtonPage> {
             ),
           ),
           Positioned(
-            left: widget.dx - MediaQuery.of(context).size.width * 0.36,
+            right: 15,
             top: widget.dy - 325,
             child: Container(
               width: 200,
@@ -106,7 +106,7 @@ class _FloatingButtonPageState extends State<FloatingButtonPage> {
             ),
           ),
           Positioned(
-            left: widget.dx - MediaQuery.of(context).size.width * 0.36,
+            right: 15,
             top: widget.dy - 65,
             child: Container(
               padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20),

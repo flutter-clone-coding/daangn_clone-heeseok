@@ -26,7 +26,6 @@ class _TabItem1PagePageState extends State<TabItem1Page> {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 15.0, right: 15.0),
-          width: MediaQuery.of(context).size.width * 0.95,
           height: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
@@ -70,7 +69,7 @@ class _TabItem1PagePageState extends State<TabItem1Page> {
                       ),
                       const SizedBox(height: 5,),
                       SizedBox(
-                        width: index != 1 ? 290 : 350,
+                        width: index != 1 ? MediaQuery.of(context).size.width * 0.7 : MediaQuery.of(context).size.width * 0.7 + 60,
                         child: Text(
                           _text[index],
                           overflow: TextOverflow.ellipsis,

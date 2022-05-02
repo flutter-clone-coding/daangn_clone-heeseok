@@ -18,7 +18,7 @@ class _MainViewPageState extends State<MainViewPage> {
 
   final GlobalKey _widgetKey = GlobalKey();
   final GlobalKey _widgetAppBarKey = GlobalKey();
-  var appBarHeight = AppBar().preferredSize.height;
+  double appBarHeight = AppBar().preferredSize.height;
 
   int _selectedIndex = 0;
   bool _floatingVisible = true;
@@ -56,7 +56,7 @@ class _MainViewPageState extends State<MainViewPage> {
   Future<void> _showPopupMenu(double dx, double dy) async {
     await showMenu<String>(
       context: context,
-      position: RelativeRect.fromLTRB(dx, dy + appBarHeight + 50, 0.0, 0.0), //position where you want to show the menu on screen
+      position: RelativeRect.fromLTRB(dx, dy+appBarHeight+50.0, 0.0, 0.0), //position where you want to show the menu on screen
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(10.0),

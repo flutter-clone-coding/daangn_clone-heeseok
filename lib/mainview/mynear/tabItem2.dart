@@ -11,7 +11,7 @@ class _TabItem2PagePageState extends State<TabItem2Page> {
 
   final _title = ["군고구마.쥐포.오징어", "삼한골든뷰센트럴파크상가 앞 붕어빵", "붕어빵",];
   final _distance = ["2Km", "807m", "464m"];
-  final _text = ["군고구마", "밭 붕어빵", "팥 붕어빵",];
+  final _text = ["군고구마", "팥 붕어빵", "팥 붕어빵",];
   final _time = ["2022.4.1", "2022.4.5", "2022.4.6"];
 
   @override
@@ -20,7 +20,6 @@ class _TabItem2PagePageState extends State<TabItem2Page> {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 15.0, right: 15.0),
-          width: MediaQuery.of(context).size.width * 0.95,
           height: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
@@ -64,7 +63,7 @@ class _TabItem2PagePageState extends State<TabItem2Page> {
                       ),
                       const SizedBox(height: 5,),
                       SizedBox(
-                        width: 350,
+                        width: MediaQuery.of(context).size.width * 0.7,
                         child: Text(
                           _text[index],
                           overflow: TextOverflow.ellipsis,

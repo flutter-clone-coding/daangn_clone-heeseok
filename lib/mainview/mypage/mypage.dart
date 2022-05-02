@@ -169,7 +169,7 @@ class _MyPageState extends State<MyPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(3, (index) {
                     return Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10, left: index == 0 ? 5 : 40, right: index == 2 ? 5 : 40),
+                      margin: EdgeInsets.only(top: 10, bottom: 10, left: index == 0 ? 0 : 35, right: index == 2 ? 0 : 35),
                       child: Column(
                         children: [
                           Container(

@@ -69,11 +69,10 @@ class _ChatPageState extends State<ChatPage> {
     return ListView(
       children: List.generate(15, (index) {
         return Container(
-          width: MediaQuery.of(context).size.width * 0.95,
           decoration: const BoxDecoration(
             border: Border(bottom: BorderSide(color: Colors.black12)),
           ),
-          padding: const EdgeInsets.only(top: 10, bottom: 10),
+          padding: const EdgeInsets.only(top: 10, bottom: 10, left: 7.5, right: 7.5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -119,7 +118,7 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     const SizedBox(height: 5,),
                     SizedBox(
-                      width: 225,
+                      width: MediaQuery.of(context).size.width * 0.55,
                       child: Text(
                         text[index%10],
                         overflow: TextOverflow.ellipsis,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NeighborhoodPage extends StatefulWidget {
@@ -210,10 +211,11 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                             Container(
                               margin: const EdgeInsets.only(top: 20),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
                                     margin: const EdgeInsets.only(right: 5),
-                                    width: MediaQuery.of(context).size.width * 0.468,
+                                    width: MediaQuery.of(context).size.width * 0.462,
                                     height: 200,
                                     clipBehavior: Clip.hardEdge,
                                     decoration: BoxDecoration(
@@ -235,7 +237,7 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                                     children: [
                                       Container(
                                         margin: const EdgeInsets.only(bottom: 2.5),
-                                        width: MediaQuery.of(context).size.width * 0.468,
+                                        width: MediaQuery.of(context).size.width * 0.462,
                                         height: 97.5,
                                         clipBehavior: Clip.hardEdge,
                                         decoration: BoxDecoration(
@@ -254,7 +256,7 @@ class _NeighborhoodPageState extends State<NeighborhoodPage> {
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(top: 2.5),
-                                        width: MediaQuery.of(context).size.width * 0.468,
+                                        width: MediaQuery.of(context).size.width * 0.462,
                                         height: 97.5,
                                         clipBehavior: Clip.hardEdge,
                                         decoration: BoxDecoration(

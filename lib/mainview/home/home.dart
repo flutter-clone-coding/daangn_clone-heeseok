@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             children: <Widget>[
               Container(
-                width: 120,
-                height: 120,
+                width: 100,
+                height: 100,
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -90,8 +90,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width - 120 - 40,
-                height: 120,
+                width: MediaQuery.of(context).size.width - 100 - 40,
+                height: 100,
                 margin: const EdgeInsets.only(left: 10),
                 child: Column(
                   children: [

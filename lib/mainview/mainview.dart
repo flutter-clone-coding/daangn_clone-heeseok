@@ -18,7 +18,6 @@ class _MainViewPageState extends State<MainViewPage> {
 
   final GlobalKey _widgetKey = GlobalKey();
   final GlobalKey _widgetAppBarKey = GlobalKey();
-  double appBarHeight = AppBar().preferredSize.height;
 
   int _selectedIndex = 0;
   bool _floatingVisible = true;
@@ -56,7 +55,7 @@ class _MainViewPageState extends State<MainViewPage> {
   Future<void> _showPopupMenu(double dx, double dy) async {
     await showMenu<String>(
       context: context,
-      position: RelativeRect.fromLTRB(dx, dy+appBarHeight+50.0, 0.0, 0.0), //position where you want to show the menu on screen
+      position: RelativeRect.fromLTRB(dx - dx, dy + 30.0, 0.0, 0.0), //position where you want to show the menu on screen
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(10.0),
@@ -143,14 +142,13 @@ class _MainViewPageState extends State<MainViewPage> {
         ),
       ),
       appBar: AppBar(
-        key: _widgetAppBarKey,
         leadingWidth: 20,
         title: _selectedIndex == 0 || _selectedIndex == 1 ? GestureDetector(
           onTap: () async {
             setState(() {
               turns += 0.5;
               print("click showPopupMenu");
-              print("${appBarHeight}");
+              print("${_getPosition(_widgetAppBarKey).dx}, ${_getPosition(_widgetAppBarKey).dy}");
             });
             // setState --> Future
             await _showPopupMenu(_getPosition(_widgetAppBarKey).dx, _getPosition(_widgetAppBarKey).dy);
@@ -173,9 +171,10 @@ class _MainViewPageState extends State<MainViewPage> {
               AnimatedRotation(
                 turns: turns,
                 duration: const Duration(milliseconds: 300),
-                child: const Icon(
+                child: Icon(
                   Icons.expand_more,
                   color: Colors.black,
+                  key: _widgetAppBarKey,
                 ),
               ),
             ],

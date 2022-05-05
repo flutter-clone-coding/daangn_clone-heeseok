@@ -195,7 +195,7 @@ class _MyNearPageState extends State<MyNearPage> with TickerProviderStateMixin {
                 ),
               ),
               Container(
-                height: 525,
+                height: MediaQuery.of(context).size.height * 0.675,
                 padding: const EdgeInsets.only(top: 20,),
                 decoration: const BoxDecoration(
                   border : Border(bottom: BorderSide(
